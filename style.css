@@ -1,0 +1,359 @@
+@charset "UTF-8";
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*全体*/
+
+h2{
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.opening {
+  position: fixed;
+  inset: 0; /* top,left,right,bottom全部0 */
+  background: black;
+  z-index: 9999;
+  animation: openScreen 1s steps(5, end) forwards;
+}
+
+@keyframes openScreen {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+/*トップページ*/
+
+.top-bg {
+    background-image: url(./images/ファンタジー02.jpg);
+    background-position: center top;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.5rem;
+    z-index: 1;
+    padding: 1rem;
+    background-color: white;
+}
+
+header .logo img {
+    height: 50px;   /* ロゴの縦サイズを基準に調整 */
+    width: auto;    /* 横は自動で比率維持 */
+    display: block;
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.top-comment {
+    background-color: rgba(102, 51, 153, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    text-align: left;
+    color: #fff;
+}
+.top-comment h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.top-comment h2 {
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+}
+
+/* ====== トップコメントのフェードイン ====== */
+.top-comment {
+    background-color: rgba(102, 51, 153, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    text-align: left;
+    color: #fff;
+
+    /* アニメーション用 初期状態 */
+    opacity: 0;
+    transform: translate(-50%, -40%); /* 少し上にズラすと自然 */
+    animation: fadeSlideIn 2s ease forwards;
+    animation-delay: 1s; /* オープニングが終わってから出すなら調整 */
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ====== 共通スタイル ====== */
+.works-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.works-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ====== 最新作品カード ====== */
+
+.works-section {
+    background-color: #00CED1;
+}
+
+.work-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color:white;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto 2rem;
+}
+
+.work-content img {
+    width: 300px;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.work-content .text {
+    flex: 1;
+}
+
+.work-content .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.work-content p {
+    text-align: left;
+}
+
+
+/* ====== 作品一覧セクション ====== */
+
+
+.works-section.list {
+    background-color: #fff; /* 白背景 */
+}
+
+.works-section.list .works-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+}
+
+.works-section.list .work-item {
+    background-color: #00CED1; /* 水色カード */
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 中央寄せ */
+    justify-content: flex-start;
+    text-align: center;  /* テキストも中央にしたいなら */
+    padding: 1rem;   /* 上の余白を増やす */
+    min-height: 500px; /* 高さをそろえる基準値（調整してね） */
+}
+
+.works-section.list .work-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.works-section.list .work-item p {
+    line-height: 1.6;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.works-section.list .work-item img {
+    width: 100%;          /* カード幅いっぱい */
+    max-width: 280px;     /* 横幅は統一 */
+    height: 350px;        /* 高さを固定（調整してね） */
+    object-fit:contain;    /* 縦横比を崩さず、枠いっぱいに切り抜く */
+    border-radius: 0.5rem;
+}   
+
+/* ====== 共通ボタン ====== */
+.more-link {
+    display: inline-block;
+    margin-bottom: 5rem; /* 余白はここで一元管理 */
+    padding: 0.7rem 1.5rem;
+    background-color: #FF6347;
+    color: #fff;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.more-link:hover {
+    background-color: #e5533d; /* hover時だけ少し濃くすると映える */
+}
+
+/* 問い合わせセクション用 */
+.contact {
+    text-align: center;
+}
+
+.contact h2 {
+    margin: 2rem;
+
+}
+
+/* ====== WORKS ====== */
+
+.works-page .top-bg {
+    background-image: url('./images/ファンタジー01.jpg');
+    min-height: 50vh;
+}
+
+.work-item img{
+    width: 100%;
+}
+
+/* ====== CONTACT ====== */
+
+.contact-page .top-bg {
+    background-image: url('./images/ファンタジー04.jpg');
+    min-height: 50vh;
+}
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  background-color: #FF6347;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #FF6347;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: #00CED1;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+.back-to-top a {
+  display: flex;
+  flex-direction: column; /* 画像の下に文字 */
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.back-to-top img {
+  width: 60px; /* 小さめに調整 */
+  height: auto;
+  margin-bottom: 0.3rem;
+  transition: transform 0.3s;
+}
+
+.back-to-top img:hover {
+  transform: scale(1.1);
+}
+
+.back-to-top span {
+  font-size: 0.9rem; /* 文字小さめ */
+  color: black;
+}
